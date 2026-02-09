@@ -1,60 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AroMi AI | Adaptive Health & Wellness Coach</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>AroMi AI | Adaptive Health Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Theme */
-            --color-bg-primary: #f8fafc;
-            --color-bg-secondary: #ffffff;
-            --color-bg-card: #ffffff;
-            --color-bg-input: #f1f5f9;
-            --color-bg-accent: #4f46e5;
-
-            --color-text-primary: #0f172a;
-            --color-text-secondary: #475569;
-            --color-text-muted: #64748b;
-            --color-text-accent: #4f46e5;
-            --color-text-on-accent: #ffffff;
-
-            --color-border: #e2e8f0;
-            --color-shadow: rgba(15, 23, 42, 0.05);
-            --color-success: #10b981;
-            --color-warning: #f59e0b;
-
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%);
-            --shadow-card: 0 10px 25px -5px var(--color-shadow);
-            --shadow-input: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --radius-card: 20px;
-            --radius-element: 12px;
-            --transition-default: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary-color: #4a6cf7;
+            --primary-light: #6a8bff;
+            --secondary-color: #10b981;
+            --accent-color: #8b5cf6;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-card: #ffffff;
+            
+            --border-color: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px rgba(74, 108, 247, 0.15);
+            --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.1);
+            
+            --gradient-1: linear-gradient(135deg, #4a6cf7 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --gradient-health: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 20px;
+            --border-radius-sm: 12px;
+            --border-radius-lg: 24px;
         }
 
-        .theme-dark {
-            /* Dark Theme */
-            --color-bg-primary: #0f172a;
-            --color-bg-secondary: #1e293b;
-            --color-bg-card: #1e293b;
-            --color-bg-input: #334155;
-            --color-bg-accent: #6366f1;
-
-            --color-text-primary: #f1f5f9;
-            --color-text-secondary: #cbd5e1;
-            --color-text-muted: #94a3b8;
-            --color-text-accent: #818cf8;
-            --color-text-on-accent: #f1f5f9;
-
-            --color-border: #334155;
-            --color-shadow: rgba(0, 0, 0, 0.25);
-            --gradient-glass: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(30, 41, 59, 0.65) 100%);
-            --shadow-card: 0 10px 25px -5px var(--color-shadow);
+        [data-theme="dark"] {
+            --primary-color: #6a8bff;
+            --primary-light: #8ba3ff;
+            --secondary-color: #34d399;
+            --accent-color: #a78bfa;
+            --danger-color: #f87171;
+            --warning-color: #fbbf24;
+            
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-light: #9ca3af;
+            
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-card: #1f2937;
+            
+            --border-color: #374151;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            --shadow-hover: 0 20px 40px rgba(74, 108, 247, 0.35);
+            --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.3);
+            
+            --gradient-1: linear-gradient(135deg, #6a8bff 0%, #a78bfa 100%);
+            --gradient-2: linear-gradient(135deg, #34d399 0%, #60a5fa 100%);
+            --gradient-health: linear-gradient(135deg, #34d399 0%, #60a5fa 100%);
         }
 
         * {
@@ -65,795 +72,1011 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--color-bg-primary);
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            transition: var(--transition-default);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: var(--transition);
         }
 
-        /* Top Navbar */
-        .navbar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            background: var(--gradient-glass);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--color-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 28px 0;
+            margin-bottom: 10px;
         }
 
-        .brand h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.75rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
-        .brand p {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            margin-top: 0.25rem;
-            font-weight: 400;
-        }
-
-        .theme-toggle {
-            background: var(--color-bg-input);
-            border: 1px solid var(--color-border);
-            color: var(--color-text-secondary);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-health);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo h1 span {
+            color: var(--secondary-color);
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            padding: 8px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle-container:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .theme-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .theme-toggle {
+            position: relative;
+            width: 80px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 50px;
+            border: 3px solid var(--border-color);
             cursor: pointer;
-            transition: var(--transition-default);
+            padding: 0;
+            overflow: hidden;
+            transition: var(--transition);
         }
 
         .theme-toggle:hover {
-            background-color: var(--color-bg-accent);
-            color: var(--color-text-on-accent);
-            transform: rotate(15deg);
+            transform: scale(1.05);
+            border-color: var(--primary-light);
+        }
+
+        .theme-toggle-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
         }
 
         .theme-toggle i {
-            font-size: 1.25rem;
+            font-size: 18px;
+            z-index: 2;
+            transition: var(--transition);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        /* Main Layout */
-        .dashboard-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1600px;
-            margin: 0 auto;
+        .theme-toggle .fa-sun {
+            color: #fbbf24;
+            left: 12px;
         }
 
-        @media (min-width: 1024px) {
-            .dashboard-container {
-                flex-direction: row;
-            }
+        .theme-toggle .fa-moon {
+            color: #d1d5db;
+            right: 12px;
         }
 
-        /* LEFT COLUMN - Chat Panel */
-        .chat-column {
-            flex: 1.2;
+        .theme-toggle-slider {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50%;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
-        .panel-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translate(34px, -50%);
+            background: #f9fafb;
+        }
+
+        /* AI Chat Section */
+        .ai-chat-section {
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .section-label span {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--secondary-color);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+
+        .chat-container {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 28px 32px;
+            background: var(--gradient-health);
+            color: white;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 16px;
         }
 
-        .panel-title i {
-            color: var(--color-text-accent);
+        .chat-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
         }
 
-        .chat-panel {
-            background-color: var(--color-bg-card);
-            border-radius: var(--radius-card);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-card);
-            height: 600px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--color-border);
-            transition: var(--transition-default);
+        .chat-header i {
+            font-size: 28px;
         }
 
-        .chat-panel:hover {
-            box-shadow: 0 20px 40px -15px var(--color-shadow);
-        }
-
-        .messages-container {
-            flex: 1;
+        .chat-messages {
+            height: 400px;
             overflow-y: auto;
-            padding-right: 0.75rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        /* Scrollbar Styling */
-        .messages-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .messages-container::-webkit-scrollbar-track {
-            background: var(--color-bg-input);
-            border-radius: 10px;
-        }
-
-        .messages-container::-webkit-scrollbar-thumb {
-            background: var(--color-text-muted);
-            border-radius: 10px;
+            padding: 32px;
+            background: var(--bg-secondary);
         }
 
         .message {
             display: flex;
-            max-width: 85%;
-            animation: fadeInUp 0.4s ease-out forwards;
+            margin-bottom: 24px;
+            animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
+            transform: translateY(10px);
+            animation-fill-mode: forwards;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .message.ai-message {
+            animation-delay: 0.1s;
         }
 
-        .message.user {
-            align-self: flex-end;
+        .message.user-message {
+            animation-delay: 0s;
         }
 
-        .message.ai {
-            align-self: flex-start;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .message-bubble {
-            padding: 1rem 1.25rem;
-            border-radius: var(--radius-element);
-            line-height: 1.5;
-            word-wrap: break-word;
-            position: relative;
+        .ai-message {
+            align-items: flex-start;
         }
 
-        .user .message-bubble {
-            background: var(--gradient-primary);
-            color: white;
-            border-bottom-right-radius: 4px;
+        .user-message {
+            align-items: flex-end;
+            flex-direction: row-reverse;
         }
 
-        .ai .message-bubble {
-            background-color: var(--color-bg-input);
-            color: var(--color-text-primary);
-            border-bottom-left-radius: 4px;
-        }
-
-        .message-sender {
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 0.375rem;
-            color: var(--color-text-muted);
-        }
-
-        .user .message-sender {
-            text-align: right;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        /* Chat Input Area */
-        .chat-input-area {
+        .message-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             display: flex;
-            gap: 0.75rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--color-border);
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin: 0 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-message .message-avatar {
+            background: var(--gradient-health);
+            color: white;
+        }
+
+        .user-message .message-avatar {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .message:hover .message-avatar {
+            transform: scale(1.1);
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .message:hover .message-content {
+            transform: translateY(-2px);
+        }
+
+        .ai-message .message-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top-left-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-message .message-content {
+            background: var(--primary-color);
+            color: white;
+            border-top-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+        }
+
+        .message-content p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .chat-input-container {
+            padding: 24px 32px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 16px;
         }
 
         .chat-input {
             flex: 1;
-            padding: 1rem 1.25rem;
-            background-color: var(--color-bg-input);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-element);
-            color: var(--color-text-primary);
+            padding: 18px 24px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition-default);
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: var(--transition);
         }
 
         .chat-input:focus {
             outline: none;
-            border-color: var(--color-text-accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
+            transform: translateY(-1px);
         }
 
         .chat-input::placeholder {
-            color: var(--color-text-muted);
+            color: var(--text-light);
         }
 
         .send-button {
-            background: var(--gradient-primary);
+            padding: 0 32px;
+            background: var(--gradient-health);
             color: white;
             border: none;
-            border-radius: var(--radius-element);
-            width: 52px;
-            height: 52px;
+            border-radius: var(--border-radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-default);
-            flex-shrink: 0;
+            gap: 12px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
         .send-button:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .send-button:hover:not(:disabled)::after {
+            left: 100%;
         }
 
         .send-button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
-        .send-button i {
-            font-size: 1.25rem;
-        }
-
-        .typing-indicator {
+        .send-button:disabled::after {
             display: none;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 1.25rem;
-            background-color: var(--color-bg-input);
-            border-radius: var(--radius-element);
-            align-self: flex-start;
-            max-width: 120px;
-            margin-bottom: 0.5rem;
         }
 
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--color-text-muted);
-            border-radius: 50%;
-            animation: typingBounce 1.4s infinite ease-in-out both;
-        }
-
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes typingBounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-
-        /* RIGHT COLUMN - Stats & Insights */
-        .stats-column {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        /* Health Stats Grid */
-        .stats-grid {
+        /* Dashboard Stats */
+        .dashboard-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
         .stat-card {
-            background: var(--gradient-glass);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-card);
-            padding: 1.5rem;
-            border: 1px solid var(--color-border);
-            box-shadow: var(--shadow-card);
-            transition: var(--transition-default);
+            background: var(--bg-card);
+            border-radius: var(--border-radius-sm);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-health);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .stat-card.updated::before {
+            transform: scaleX(1);
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px var(--color-shadow);
-        }
-
-        .stat-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
         }
 
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary-color);
+            font-size: 24px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card:hover .stat-icon {
+            background: var(--gradient-health);
             color: white;
-            font-size: 1.25rem;
-            background: var(--gradient-primary);
+            transform: scale(1.1);
         }
 
         .stat-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 1rem;
-            color: var(--color-text-secondary);
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .stat-card:hover .stat-title {
+            color: var(--text-primary);
         }
 
         .stat-value {
             font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--color-text-primary);
-            margin-top: 0.5rem;
-            min-height: 1.8rem;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-value.updating {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .stat-value.empty {
-            color: var(--color-text-muted);
-            font-weight: 500;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
         }
 
-        /* AI Insights Card */
-        .insights-card {
-            background-color: var(--color-bg-card);
-            border-radius: var(--radius-card);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-card);
-            border: 1px solid var(--color-border);
-            transition: var(--transition-default);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .stat-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            opacity: 0.8;
         }
 
-        .insights-card:hover {
-            box-shadow: 0 20px 40px -15px var(--color-shadow);
+        /* Insights Panel */
+        .insights-panel {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow-strong);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insights-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-health);
         }
 
         .insights-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .insights-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .insights-header i {
-            color: var(--color-success);
-            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 28px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .insights-content {
-            flex: 1;
-            background-color: var(--color-bg-input);
-            border-radius: var(--radius-element);
-            padding: 1.25rem;
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            overflow-y: auto;
-            min-height: 180px;
-            font-size: 0.95rem;
-            white-space: pre-wrap;
-            transition: var(--transition-default);
+            padding: 24px;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border-color);
+            min-height: 120px;
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .insights-content.updating {
+            opacity: 0.5;
+            transform: translateY(10px);
         }
 
         .insights-content.empty {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-text-muted);
+            color: var(--text-light);
             font-style: italic;
         }
 
-        /* Status Messages */
-        .status-message {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-element);
-            background-color: var(--color-bg-secondary);
-            color: var(--color-text-primary);
-            box-shadow: 0 10px 25px -5px var(--color-shadow);
-            border-left: 4px solid var(--color-success);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            z-index: 1000;
-            max-width: 350px;
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border-color);
         }
 
-        .status-message.error {
-            border-left-color: #ef4444;
+        .typing-indicator i {
+            animation: spin 1s linear infinite;
         }
 
-        .status-message.show {
-            transform: translateY(0);
-            opacity: 1;
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
         }
 
-        /* Mobile Responsiveness */
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            line-height: 1.8;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer i {
+            color: var(--danger-color);
+            margin: 0 5px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .dashboard-container, .navbar {
-                padding: 1.25rem;
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
-
-            .chat-panel {
-                height: 500px;
-                padding: 1.5rem;
+            
+            .theme-toggle-container {
+                width: 100%;
+                justify-content: center;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            
+            .chat-messages {
+                height: 300px;
+                padding: 20px;
             }
-
-            .message {
-                max-width: 90%;
+            
+            .message-content {
+                max-width: 85%;
+            }
+            
+            .chat-input-container {
+                flex-direction: column;
+            }
+            
+            .send-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 16px;
             }
-
-            .brand h1 {
-                font-size: 1.5rem;
+            
+            .chat-header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
             }
-
-            .brand p {
-                font-size: 0.8rem;
+            
+            .stat-card {
+                padding: 20px;
+            }
+            
+            .insights-panel {
+                padding: 24px;
             }
         }
     </style>
 </head>
-<body class="theme-light">
-    <!-- Top Navbar -->
-    <nav class="navbar">
-        <div class="brand">
-            <h1>AroMi AI</h1>
-            <p>Adaptive Health & Wellness Coach</p>
-        </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </nav>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div>
+                    <h1>AroMi <span>AI</span></h1>
+                    <div class="logo-subtitle">Adaptive Health & Wellness Coach</div>
+                </div>
+            </div>
+            
+            <div class="theme-toggle-container">
+                <span class="theme-label">Theme</span>
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="theme-toggle-inner">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <div class="theme-toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- Main Dashboard -->
-    <main class="dashboard-container">
-        <!-- LEFT COLUMN: AI Chat -->
-        <section class="chat-column">
-            <h2 class="panel-title"><i class="fas fa-comments"></i> AI Health Coach</h2>
-            <div class="chat-panel">
-                <div class="messages-container" id="messagesContainer">
-                    <!-- Initial welcome message -->
-                    <div class="message ai">
-                        <div class="message-sender">AroMi AI</div>
-                        <div class="message-bubble">
-                            Hello! I'm your AroMi AI Health Coach. Tell me about your health goals, diet, schedule, or energy levels. I'll help track your stats and provide personalized insights.
+        <!-- AI Chat Section -->
+        <section class="ai-chat-section">
+            <div class="section-label">
+                <span>Primary Input</span>
+            </div>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i>
+                    <h2>Talk to AroMi (AI Health Coach)</h2>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm AroMi, your adaptive health coach. Tell me about your health goals, diet preferences, daily routine, or how you're feeling today. I'll analyze and update your dashboard with personalized insights.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- AI Typing Indicator -->
-                <div class="typing-indicator" id="typingIndicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <span>AI thinking...</span>
-                </div>
-
-                <!-- Chat Input -->
-                <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Describe your health goals, diet, energy levels..." autocomplete="off">
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Example: 'I am 21, want weight loss, vegetarian, 30 minutes daily' or 'I feel tired today'...">
                     <button class="send-button" id="sendButton">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-paper-plane"></i> Send
                     </button>
                 </div>
             </div>
-        </section>
-
-        <!-- RIGHT COLUMN: Health Stats & Insights -->
-        <section class="stats-column">
-            <!-- Health Stats Grid -->
-            <div>
-                <h2 class="panel-title"><i class="fas fa-chart-line"></i> Health Metrics</h2>
-                <div class="stats-grid">
-                    <!-- Goal Card -->
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <h3 class="stat-title">Primary Goal</h3>
-                            <div class="stat-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value empty" id="goalValue">Not provided yet</div>
-                    </div>
-
-                    <!-- Diet Card -->
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <h3 class="stat-title">Diet Preference</h3>
-                            <div class="stat-icon">
-                                <i class="fas fa-apple-alt"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value empty" id="dietValue">Not provided yet</div>
-                    </div>
-
-                    <!-- Time Card -->
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <h3 class="stat-title">Time Availability</h3>
-                            <div class="stat-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value empty" id="timeValue">Not provided yet</div>
-                    </div>
-
-                    <!-- Energy Card -->
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <h3 class="stat-title">Energy Level</h3>
-                            <div class="stat-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value empty" id="energyValue">Not provided yet</div>
-                    </div>
-
-                    <!-- Consistency Card -->
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <h3 class="stat-title">Consistency</h3>
-                            <div class="stat-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value empty" id="consistencyValue">Not provided yet</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Insights Card -->
-            <div class="insights-card">
-                <div class="insights-header">
-                    <i class="fas fa-lightbulb"></i>
-                    <h2 class="panel-title">AI Insights & Recommendations</h2>
-                </div>
-                <div class="insights-content empty" id="insightsValue">
-                    Your personalized health insights will appear here after you chat with the AI.
+            
+            <div class="typing-indicator" id="typingIndicator">
+                <i class="fas fa-spinner"></i>
+                <span>AroMi is analyzing</span>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Status Message Toast -->
-    <div class="status-message" id="statusMessage">
-        <div id="statusText">Message sent successfully!</div>
+        <!-- Dashboard Stats -->
+        <section class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="stat-title">Primary Goal</h3>
+                <div class="stat-value empty" id="goalStat">Not provided yet</div>
+                <p class="stat-note">Based on your conversation</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="stat-title">Diet Preference</h3>
+                <div class="stat-value empty" id="dietStat">Not provided yet</div>
+                <p class="stat-note">Extracted from your input</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="stat-title">Daily Time Available</h3>
+                <div class="stat-value empty" id="timeStat">Not provided yet</div>
+                <p class="stat-note">For workouts & meal prep</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="stat-title">Current Energy Level</h3>
+                <div class="stat-value empty" id="energyStat">Not provided yet</div>
+                <p class="stat-note">Based on your latest input</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="stat-title">Consistency Status</h3>
+                <div class="stat-value empty" id="consistencyStat">Not provided yet</div>
+                <p class="stat-note">AI-tracked adherence</p>
+            </div>
+        </section>
+
+        <!-- AI Insights Panel -->
+        <section class="insights-panel">
+            <div class="insights-header">
+                <i class="fas fa-brain"></i>
+                <h2>AI Insights & Recommendations</h2>
+            </div>
+            
+            <div class="insights-content empty" id="insightsContent">
+                Your personalized health insights will appear here after chatting with AroMi.
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart"></i> by AroMi AI Team</p>
+            <p>© 2023 AroMi AI Agent. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
-        // DOM Elements
-        const themeToggle = document.getElementById('themeToggle');
-        const chatInput = document.getElementById('chatInput');
-        const sendButton = document.getElementById('sendButton');
-        const messagesContainer = document.getElementById('messagesContainer');
-        const typingIndicator = document.getElementById('typingIndicator');
-        const statusMessage = document.getElementById('statusMessage');
-        const statusText = document.getElementById('statusText');
-
-        // Stats DOM Elements
-        const goalValue = document.getElementById('goalValue');
-        const dietValue = document.getElementById('dietValue');
-        const timeValue = document.getElementById('timeValue');
-        const energyValue = document.getElementById('energyValue');
-        const consistencyValue = document.getElementById('consistencyValue');
-        const insightsValue = document.getElementById('insightsValue');
-
-        // Backend URL
-        const BACKEND_URL = 'https://aromi-ai-production.up.railway.app/chat';
-
         // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        htmlElement.setAttribute('data-theme', savedTheme);
+        
         themeToggle.addEventListener('click', () => {
-            const body = document.body;
-            const icon = themeToggle.querySelector('i');
-
-            if (body.classList.contains('theme-light')) {
-                body.classList.replace('theme-light', 'theme-dark');
-                icon.classList.replace('fa-moon', 'fa-sun');
-                showStatus('Switched to dark mode');
-            } else {
-                body.classList.replace('theme-dark', 'theme-light');
-                icon.classList.replace('fa-sun', 'fa-moon');
-                showStatus('Switched to light mode');
-            }
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         });
 
-        // Send Message Function
-        async function sendMessage() {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
+        // Backend Configuration
+        const BACKEND_URL = 'https://aromi-ai-production.up.railway.app/chat';
 
-            // Disable input and button during request
-            chatInput.disabled = true;
-            sendButton.disabled = true;
+        // DOM Elements
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.getElementById('chatMessages');
+        const typingIndicator = document.getElementById('typingIndicator');
+        
+        // Dashboard elements
+        const goalStat = document.getElementById('goalStat');
+        const dietStat = document.getElementById('dietStat');
+        const timeStat = document.getElementById('timeStat');
+        const energyStat = document.getElementById('energyStat');
+        const consistencyStat = document.getElementById('consistencyStat');
+        const insightsContent = document.getElementById('insightsContent');
+        const statCards = document.querySelectorAll('.stat-card');
 
-            // Add user message to chat
-            addMessageToChat(userMessage, 'user');
-            chatInput.value = '';
+        function addMessageToChat(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}-message`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.innerHTML = `<i class="fas fa-${role === 'ai' ? 'robot' : 'user'}"></i>`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            const p = document.createElement('p');
+            p.textContent = content;
+            contentDiv.appendChild(p);
+            
+            if (role === 'ai') {
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(contentDiv);
+            } else {
+                messageDiv.appendChild(contentDiv);
+                messageDiv.appendChild(avatar);
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-            // Show typing indicator
-            typingIndicator.style.display = 'flex';
+        function updateDashboard(data) {
+            // Show updating animation
+            [goalStat, dietStat, timeStat, energyStat, consistencyStat].forEach(stat => {
+                stat.classList.add('updating');
+            });
+            insightsContent.classList.add('updating');
 
+            // Update stats with animation delay
+            setTimeout(() => {
+                // Update stats
+                goalStat.textContent = data.goal || 'Not provided yet';
+                dietStat.textContent = data.diet || 'Not provided yet';
+                timeStat.textContent = data.time || 'Not provided yet';
+                energyStat.textContent = data.energy || 'Not provided yet';
+                consistencyStat.textContent = data.consistency || 'Not provided yet';
+                
+                // Remove empty state classes if data exists
+                [goalStat, dietStat, timeStat, energyStat, consistencyStat].forEach(stat => {
+                    if (stat.textContent !== 'Not provided yet') {
+                        stat.classList.remove('empty');
+                    } else {
+                        stat.classList.add('empty');
+                    }
+                });
+                
+                // Update insights
+                if (data.insights) {
+                    insightsContent.textContent = data.insights;
+                    insightsContent.classList.remove('empty');
+                } else {
+                    insightsContent.textContent = 'No specific insights generated yet.';
+                    insightsContent.classList.add('empty');
+                }
+
+                // Remove updating animations
+                [goalStat, dietStat, timeStat, energyStat, consistencyStat].forEach(stat => {
+                    stat.classList.remove('updating');
+                });
+                insightsContent.classList.remove('updating');
+
+                // Highlight updated cards
+                statCards.forEach(card => {
+                    card.classList.add('updated');
+                    setTimeout(() => card.classList.remove('updated'), 1000);
+                });
+            }, 300);
+        }
+
+        async function callBackendAPI(userMessage) {
             try {
-                // Prepare and send POST request to backend
                 const response = await fetch(BACKEND_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ message: userMessage })
+                    body: JSON.stringify({
+                        message: userMessage
+                    })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Server responded with status: ${response.status}`);
+                    throw new Error(`Backend request failed with status ${response.status}`);
                 }
 
                 const data = await response.json();
-
-                // Simulate AI thinking delay for better UX
-                setTimeout(() => {
-                    typingIndicator.style.display = 'none';
-
-                    // Add AI reply to chat
-                    if (data.reply) {
-                        addMessageToChat(data.reply, 'ai');
-                    } else {
-                        addMessageToChat("I've processed your information. Check your updated health metrics!", 'ai');
-                    }
-
-                    // Update dashboard with data from backend
-                    updateDashboard(data.data || {});
-
-                    showStatus('AI response received & dashboard updated');
-                }, 800);
-
+                return {
+                    reply: data.reply || "I've analyzed your input and updated your dashboard.",
+                    data: data.data || {}
+                };
             } catch (error) {
-                console.error('Error communicating with AI backend:', error);
-                typingIndicator.style.display = 'none';
-
-                // Show error message in chat
-                addMessageToChat("I'm having trouble connecting to my backend right now. Please check the connection or try again shortly.", 'ai');
-                showStatus('Connection error. Please try again.', true);
-            } finally {
-                // Re-enable input and button
-                chatInput.disabled = false;
-                sendButton.disabled = false;
-                chatInput.focus();
+                console.error('Backend API error:', error);
+                return {
+                    reply: "I apologize, but I'm having trouble connecting to my analysis system. Please try again in a moment.",
+                    data: {}
+                };
             }
-        }
-
-        // Add message bubble to chat UI
-        function addMessageToChat(message, sender) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', sender);
-
-            const senderName = sender === 'user' ? 'You' : 'AroMi AI';
-            const bubbleClass = sender === 'user' ? 'user' : 'ai';
-
-            messageElement.innerHTML = `
-                <div class="message-sender">${senderName}</div>
-                <div class="message-bubble">${escapeHtml(message)}</div>
-            `;
-
-            messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            // Trigger animation
-            setTimeout(() => {
-                messageElement.style.animation = 'fadeInUp 0.4s ease-out forwards';
-            }, 10);
-        }
-
-        // Update dashboard cards with AI-extracted data
-        function updateDashboard(data) {
-            // Helper function to update a stat card
-            const updateStat = (element, value) => {
-                if (value && value.trim() !== '') {
-                    element.textContent = value;
-                    element.classList.remove('empty');
-                } else {
-                    element.textContent = 'Not provided yet';
-                    element.classList.add('empty');
-                }
-            };
-
-            // Update all stat cards
-            updateStat(goalValue, data.goal);
-            updateStat(dietValue, data.diet);
-            updateStat(timeValue, data.time);
-            updateStat(energyValue, data.energy);
-            updateStat(consistencyValue, data.consistency);
-
-            // Update insights card
-            if (data.insights && data.insights.trim() !== '') {
-                insightsValue.textContent = data.insights;
-                insightsValue.classList.remove('empty');
-            } else {
-                insightsValue.textContent = 'Your personalized health insights will appear here after you chat with the AI.';
-                insightsValue.classList.add('empty');
-            }
-        }
-
-        // Show status toast message
-        function showStatus(message, isError = false) {
-            statusText.textContent = message;
-            statusMessage.className = 'status-message';
-
-            if (isError) {
-                statusMessage.classList.add('error');
-            }
-
-            statusMessage.classList.add('show');
-
-            // Auto-hide after 4 seconds
-            setTimeout(() => {
-                statusMessage.classList.remove('show');
-            }, 4000);
-        }
-
-        // Basic HTML escaping for security
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
         }
 
         // Event Listeners
         sendButton.addEventListener('click', sendMessage);
-
         chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
+            if (e.key === 'Enter' && !sendButton.disabled) {
                 sendMessage();
             }
         });
 
-        // Initial focus on chat input
-        chatInput.focus();
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessageToChat('user', message);
+            chatInput.value = '';
+            sendButton.disabled = true;
+            typingIndicator.style.display = 'flex';
+            
+            try {
+                // Call Backend API
+                const response = await callBackendAPI(message);
+                
+                // Simulate AI thinking time for better UX
+                await new Promise(resolve => setTimeout(resolve, 800));
+                
+                // Add AI message to chat
+                addMessageToChat('ai', response.reply);
+                
+                // Update dashboard with AI analysis
+                updateDashboard(response.data);
+            } catch (error) {
+                console.error('Error:', error);
+                addMessageToChat('ai', "I apologize, but I encountered an error processing your request. Please try again.");
+            } finally {
+                sendButton.disabled = false;
+                typingIndicator.style.display = 'none';
+                chatInput.focus();
+            }
+        }
 
-        // Demo data update on first interaction (optional, can be removed)
-        // This simulates the backend connection working
-        console.log('AroMi AI Dashboard loaded. Backend URL:', BACKEND_URL);
-        console.log('Try asking: "My goal is to lose weight, I eat vegetarian, and have 30 minutes daily for exercise."');
+        // Example message for demo purposes
+        setTimeout(() => {
+            chatInput.placeholder = "Try: 'I am 21, want weight loss, vegetarian, 30 minutes daily'";
+        }, 2000);
+
+        // Initialize
+        chatInput.focus();
     </script>
 </body>
 </html>
