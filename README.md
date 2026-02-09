@@ -1,14 +1,15 @@
-# 🌿 AroMi AI Agent
+# AroMi AI Agent - Backend
 
-Real-time AI health & wellness dashboard powered by conversational AI agent using Groq's LLaMA-3 model.
+FastAPI backend for AroMi AI Agent that processes health and wellness conversations and extracts structured metrics.
 
-## ✨ Features
+## Prerequisites
 
-- **Real-time AI Conversations**: Chat naturally about health, wellness, goals, and habits
-- **Smart Dashboard**: Automatically extracts and visualizes wellness metrics from conversations
-- **Personalized Insights**: Gets actionable recommendations based on your chat history
-- **Premium UI**: Clean, responsive interface with dark/light mode
-- **Full-Stack Architecture**: Secure backend with frontend-only API calls
-- **Production Ready**: Error handling, loading states, and user-friendly prompts
+- Python 3.9+
+- Groq API key (get from [groq.com](https://console.groq.com/))
 
-## 🏗️ Architecture
+## Local Development
+
+1. Clone the repository
+2. Navigate to backend directory:
+   ```bash
+   cd backend
