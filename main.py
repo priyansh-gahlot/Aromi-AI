@@ -82,109 +82,44 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+@app.post("/chat")
+def chat(req: ChatRequest):
+    if not GROQ_API_KEY:
+        return {
+            "reply": "AI service is not configured yet.",
+            "data": {}
+        }
 
-@app.post("/chat", response_model=ChatResponse)
-async def chat_endpoint(request: ChatRequest):
-    """
-    Process chat messages and get AI response with wellness metrics
-    """
     try:
-        # Check API key
-        if not GROQ_API_KEY:
-            raise HTTPException(
-                status_code=500,
-                detail="Groq API key not configured. Please set GROQ_API_KEY environment variable."
-            )
-        
-        # Prepare messages for Groq API
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": request.message}
-        ]
-        
-        # Add conversation history if provided
-        if request.conversation_history:
-            # Add only last 5 messages to avoid token limits
-            for msg in request.conversation_history[-5:]:
-                messages.insert(-1, msg)
-        
-        # Prepare request payload
-        payload = {
-            "model": MODEL_NAME,
-            "messages": messages,
-            "temperature": 0.7,
-            "max_tokens": 500,
-            "response_format": {"type": "json_object"}
-        }
-        
-        headers = {
-            "Authorization": f"Bearer {GROQ_API_KEY}",
-            "Content-Type": "application/json"
-        }
-        
-        # Call Groq API
-        logger.info(f"Sending request to Groq API with model: {MODEL_NAME}")
-        response = requests.post(GROQ_API_URL, json=payload, headers=headers, timeout=30)
-        
-        if response.status_code != 200:
-            logger.error(f"Groq API error: {response.status_code} - {response.text}")
-            raise HTTPException(
-                status_code=response.status_code,
-                detail=f"Groq API error: {response.text}"
-            )
-        
-        # Parse response
-        result = response.json()
-        ai_response_content = result["choices"][0]["message"]["content"]
-        
-        # Parse JSON from AI response
-        try:
-            parsed_response = json.loads(ai_response_content)
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse AI response as JSON: {ai_response_content}")
-            # Fallback response
-            parsed_response = {
-                "reply": "I understand your message about health and wellness. Let me help you track your progress!",
-                "data": {
-                    "goal": "",
-                    "diet": "",
-                    "time": "",
-                    "energy": "",
-                    "consistency": "",
-                    "insights": "Start tracking daily habits for better insights"
-                }
-            }
-        
-        # Validate response structure
-        if "reply" not in parsed_response or "data" not in parsed_response:
-            logger.error(f"Invalid response structure: {parsed_response}")
-            raise HTTPException(
-                status_code=500,
-                detail="AI returned invalid response format"
-            )
-        
-        # Ensure all data fields exist
-        required_fields = ["goal", "diet", "time", "energy", "consistency", "insights"]
-        for field in required_fields:
-            if field not in parsed_response["data"]:
-                parsed_response["data"][field] = ""
-        
-        logger.info(f"Successfully processed chat request: {request.message[:50]}...")
-        
-        return ChatResponse(
-            reply=parsed_response["reply"],
-            data=parsed_response["data"]
+        response = requests.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {GROQ_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "llama-3.3-70b-versatile",
+                "messages": [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": req.message},
+                ],
+                "temperature": 0.6,
+                "max_tokens": 500,
+            },
+            timeout=20
         )
-        
-    except requests.exceptions.Timeout:
-        logger.error("Groq API request timed out")
-        raise HTTPException(status_code=504, detail="AI service timeout")
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Network error: {str(e)}")
-        raise HTTPException(status_code=503, detail="Service temporarily unavailable")
+
+        response.raise_for_status()
+
+        content = response.json()["choices"][0]["message"]["content"]
+        return json.loads(content)
+
     except Exception as e:
-        logger.error(f"Unexpected error: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+        return {
+            "reply": "Something went wrong, please try again.",
+            "data": {},
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     import uvicorn
