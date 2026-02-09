@@ -1,265 +1,162 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AroMi AI - Health & Wellness Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AroMi AI – Health Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: Inter, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: Poppins;
+      font-size: 28px;
+    }
+
+    .chat-box, .card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .messages {
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+    }
+
+    .msg {
+      margin-bottom: 12px;
+    }
+
+    .user { color: #38bdf8; }
+    .ai { color: #22c55e; }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: none;
+      background: #22c55e;
+      color: black;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 16px;
+    }
+
+    .value {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <div class="logo">🌿</div>
-                <div class="logo-text">
-                    <h1>AroMi AI</h1>
-                    <p class="tagline">Your Personal Health & Wellness Companion</p>
-                </div>
-            </div>
-            <div class="header-controls">
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="status-indicator" id="apiStatus">
-                    <span class="status-dot"></span>
-                    <span class="status-text">Connecting...</span>
-                </div>
-            </div>
-        </header>
+<div class="container">
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Chat Section -->
-            <section class="chat-section">
-                <div class="chat-header">
-                    <h2><i class="fas fa-comment-medical"></i> Chat with AroMi</h2>
-                    <p class="subtitle">Share your health updates, goals, or ask for wellness advice</p>
-                </div>
-                
-                <div class="chat-container">
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message ai-message">
-                            <div class="message-avatar">🌿</div>
-                            <div class="message-content">
-                                <div class="message-sender">AroMi AI</div>
-                                <div class="message-text">Hello! I'm AroMi, your health and wellness assistant. How are you feeling today? You can tell me about your sleep, diet, exercise, or any wellness goals you have.</div>
-                                <div class="message-time">Just now</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-input-container">
-                        <div class="input-wrapper">
-                            <textarea 
-                                id="messageInput" 
-                                placeholder="Type your message here... (e.g., 'I slept 7 hours and did 30 mins of yoga today')" 
-                                rows="2"></textarea>
-                            <button id="sendButton" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                        <div class="input-hints">
-                            <span class="hint"><i class="fas fa-lightbulb"></i> Try: "I want to improve my sleep quality"</span>
-                            <span class="hint"><i class="fas fa-lightbulb"></i> Try: "I ate 3 healthy meals today"</span>
-                            <span class="hint"><i class="fas fa-lightbulb"></i> Try: "I feel energetic this morning"</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <header>
+    <h1>🌿 AroMi AI</h1>
+    <p>Adaptive Health & Wellness Coach</p>
+  </header>
 
-            <!-- Dashboard Section -->
-            <section class="dashboard-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-chart-line"></i> Wellness Dashboard</h2>
-                    <p class="subtitle">Your health metrics extracted from conversations</p>
-                </div>
-                
-                <div class="stats-grid">
-                    <!-- Goal Card -->
-                    <div class="stat-card" id="goalCard">
-                        <div class="stat-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-title">Primary Goal</h3>
-                            <p class="stat-value" id="goalValue">Not set</p>
-                            <div class="stat-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="goalProgress"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <!-- CHAT -->
+  <div class="chat-box">
+    <h2>Chat with AroMi</h2>
+    <div class="messages" id="messages"></div>
 
-                    <!-- Diet Card -->
-                    <div class="stat-card" id="dietCard">
-                        <div class="stat-icon">
-                            <i class="fas fa-apple-alt"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-title">Diet Quality</h3>
-                            <p class="stat-value" id="dietValue">Not discussed</p>
-                            <div class="stat-trend">
-                                <span class="trend-text" id="dietTrend">Start tracking nutrition</span>
-                            </div>
-                        </div>
-                    </div>
+    <input id="input" placeholder="Tell me about your health, diet, energy..." />
+    <button onclick="send()">Send</button>
+  </div>
 
-                    <!-- Time Card -->
-                    <div class="stat-card" id="timeCard">
-                        <div class="stat-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-title">Routine Pattern</h3>
-                            <p class="stat-value" id="timeValue">Not analyzed</p>
-                            <div class="stat-detail">
-                                <span class="detail-text" id="timeDetail">Based on your mentions</span>
-                            </div>
-                        </div>
-                    </div>
+  <!-- DASHBOARD -->
+  <div class="grid">
+    <div class="card"><b>Goal</b><div class="value" id="goal">—</div></div>
+    <div class="card"><b>Diet</b><div class="value" id="diet">—</div></div>
+    <div class="card"><b>Time</b><div class="value" id="time">—</div></div>
+    <div class="card"><b>Energy</b><div class="value" id="energy">—</div></div>
+    <div class="card"><b>Consistency</b><div class="value" id="consistency">—</div></div>
+  </div>
 
-                    <!-- Energy Card -->
-                    <div class="stat-card" id="energyCard">
-                        <div class="stat-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-title">Energy Level</h3>
-                            <p class="stat-value" id="energyValue">--</p>
-                            <div class="energy-indicator">
-                                <div class="energy-bars">
-                                    <div class="energy-bar" data-level="1"></div>
-                                    <div class="energy-bar" data-level="2"></div>
-                                    <div class="energy-bar" data-level="3"></div>
-                                    <div class="energy-bar" data-level="4"></div>
-                                    <div class="energy-bar" data-level="5"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="card">
+    <h3>AI Insights</h3>
+    <p id="insights">Start chatting to receive insights.</p>
+  </div>
 
-                    <!-- Consistency Card -->
-                    <div class="stat-card" id="consistencyCard">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-title">Habit Consistency</h3>
-                            <p class="stat-value" id="consistencyValue">Starting</p>
-                            <div class="stat-badge" id="consistencyBadge">
-                                <span class="badge-text">New</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+</div>
 
-            <!-- Insights Section -->
-            <section class="insights-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-chart-pie"></i> Personalized Insights</h2>
-                    <p class="subtitle">Actionable recommendations based on your conversations</p>
-                </div>
-                
-                <div class="insights-container">
-                    <div class="insights-card">
-                        <div class="insights-header">
-                            <div class="insights-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3>Today's Insight</h3>
-                        </div>
-                        <div class="insights-content">
-                            <p id="insightsText">Start a conversation with AroMi to get personalized health insights based on your goals and habits.</p>
-                        </div>
-                        <div class="insights-footer">
-                            <div class="insights-source">
-                                <i class="fas fa-robot"></i>
-                                <span>Generated by AroMi AI</span>
-                            </div>
-                            <div class="insights-time" id="insightsTime">Just now</div>
-                        </div>
-                    </div>
-                    
-                    <div class="quick-tips">
-                        <h3><i class="fas fa-tips"></i> Quick Wellness Tips</h3>
-                        <ul class="tips-list">
-                            <li><i class="fas fa-check-circle"></i> Drink water first thing in the morning</li>
-                            <li><i class="fas fa-check-circle"></i> Take short movement breaks every hour</li>
-                            <li><i class="fas fa-check-circle"></i> Practice 5 minutes of mindful breathing daily</li>
-                            <li><i class="fas fa-check-circle"></i> Aim for 7-9 hours of quality sleep</li>
-                            <li><i class="fas fa-check-circle"></i> Include protein in every meal</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
+<script>
+const API_URL = "https://aromi-ai-production.up.railway.app/chat";
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p>AroMi AI Agent v1.0 • Real-time health & wellness tracking</p>
-                    <p class="disclaimer"><i class="fas fa-exclamation-circle"></i> This is a wellness assistant, not a medical device. Always consult healthcare professionals for medical advice.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="api-status-footer">
-                        <span>Backend: </span>
-                        <span class="status-indicator-small" id="apiStatusFooter">
-                            <span class="status-dot-small"></span>
-                            <span class="status-text-small">Checking...</span>
-                        </span>
-                    </div>
-                    <button id="clearChatBtn" class="text-button">
-                        <i class="fas fa-eraser"></i> Clear Chat
-                    </button>
-                </div>
-            </div>
-        </footer>
-    </div>
+function add(role,text){
+  const div = document.createElement("div");
+  div.className = "msg " + role;
+  div.innerText = role.toUpperCase() + ": " + text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
 
-    <!-- Connection Modal -->
-    <div id="connectionModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-plug"></i> Backend Configuration</h3>
-                <button id="closeModalBtn" class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>To use AroMi AI, you need to connect to a backend server.</p>
-                
-                <div class="backend-config">
-                    <label for="backendUrl">Backend URL:</label>
-                    <div class="input-group">
-                        <input type="text" id="backendUrl" placeholder="https://your-backend.onrender.com" value="">
-                        <button id="testConnectionBtn" class="secondary-button">
-                            <i class="fas fa-test-tube"></i> Test Connection
-                        </button>
-                    </div>
-                    <p class="help-text">
-                        <i class="fas fa-info-circle"></i> 
-                        If you've deployed the backend on Railway/Render, enter your public URL here.
-                        The default is set to a sample endpoint that may not work.
-                    </p>
-                </div>
-                
-                <div class="modal-actions">
-                    <button id="saveBackendBtn" class="primary-button">
-                        <i class="fas fa-save"></i> Save & Connect
-                    </button>
-                    <button id="useLocalhostBtn" class="secondary-button">
-                        <i class="fas fa-laptop-code"></i> Use Localhost
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+async function send(){
+  const msg = input.value.trim();
+  if(!msg) return;
 
-    <script src="dashboard.js"></script>
+  add("user",msg);
+  input.value="";
+
+  const res = await fetch(API_URL,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({message:msg})
+  });
+
+  const data = await res.json();
+
+  add("ai",data.reply || "Updated your dashboard.");
+
+  const d = data.data || {};
+  goal.textContent = d.goal || "—";
+  diet.textContent = d.diet || "—";
+  time.textContent = d.time || "—";
+  energy.textContent = d.energy || "—";
+  consistency.textContent = d.consistency || "—";
+  insights.textContent = d.insights || "—";
+}
+</script>
 </body>
 </html>
